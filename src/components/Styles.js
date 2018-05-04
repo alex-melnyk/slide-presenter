@@ -1,6 +1,6 @@
 import {Dimensions} from 'react-native';
 import {Colors} from "../utils/colors";
-import {BORDER_RADIUS_LG, SPACE_LG, SPACE_LG2, SPACE_MD, SPACE_MD2, SPACE_SM, SPACE_SM2} from "../utils/sizes";
+import {BORDER_RADIUS_LG, SPACE_LG, SPACE_LG2, SPACE_MD, SPACE_MD2, SPACE_SM} from "../utils/sizes";
 
 export const screen = Dimensions.get('screen');
 export const contentWidth = (screen.width - SPACE_LG2 - SPACE_MD2 - SPACE_MD2);

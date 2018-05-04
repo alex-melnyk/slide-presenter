@@ -1,11 +1,17 @@
-import {Dimensions, Image} from 'react-native';
+import {Image} from 'react-native';
+import {screen} from "../Styles";
 import {Colors} from "../../utils/colors";
+
 import {
-    BORDER_RADIUS_LG, FONT_SIZE_MD, FONT_SIZE_XL, SPACE_LG, SPACE_LG2, SPACE_MD, SPACE_SM,
+    BORDER_RADIUS_LG,
+    FONT_SIZE_MD,
+    FONT_SIZE_XL,
+    SPACE_LG,
+    SPACE_LG2,
+    SPACE_MD,
+    SPACE_SM,
     SPACE_XS
 } from "../../utils/sizes";
-
-const screen = Dimensions.get('screen');
 
 const BackdropStyles = {
     container: {

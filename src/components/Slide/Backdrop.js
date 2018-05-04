@@ -17,7 +17,7 @@ const Backdrop = ({backdrop: {uri}}) => (
 
 Backdrop.propTypes = {
     backdrop: PropTypes.shape({
-        // uri: PropTypes.string.isRequired
+        uri: PropTypes.any
     }).isRequired
 };
 
