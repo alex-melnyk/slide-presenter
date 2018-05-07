@@ -46,7 +46,12 @@ const MainStyles = {
         position: 'absolute',
         top: 0,
         left: 0,
-        width: screen.width
+        width: screen.width,
+        shadowColor: Colors.black,
+        shadowOffset: {width: 0, height: SPACE_SM},
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 2
     },
 
 };

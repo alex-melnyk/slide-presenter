@@ -3,7 +3,7 @@ import {screen} from "../Styles";
 import {Colors} from "../../utils/colors";
 
 import {
-    BORDER_RADIUS_LG,
+    BORDER_RADIUS_LG, BORDER_RADIUS_MD,
     FONT_SIZE_MD,
     FONT_SIZE_XL,
     SPACE_LG,
@@ -72,7 +72,7 @@ const PosterStyles = {
         position: 'absolute',
         width: '100%',
         height: '100%',
-        borderRadius: BORDER_RADIUS_LG,
+        borderRadius: BORDER_RADIUS_MD,
         overflow: 'hidden'
     }
 };

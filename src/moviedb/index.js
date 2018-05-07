@@ -1,5 +1,5 @@
-import {API_KEY} from "../auth";
 import uuid from "uuid";
+import {API_KEY} from "../auth";
 
 export const SERVER_URL = 'https://api.themoviedb.org/3';
 export const SERVER_IMAGE_URL = 'https://image.tmdb.org/t/p';
@@ -12,26 +12,22 @@ export const getImageURL = (path, size = 500) => {
     return `${SERVER_IMAGE_URL}/w${size}${path}`;
 };
 
-export default (path) => {
-    const address = `${SERVER_URL}${path}?api_key=${API_KEY}`;
-
-    return fetch(address)
+export default async (path, lang = 'en') => {
+    return fetch(`${SERVER_URL}${path}?api_key=${API_KEY}&language=${lang}`)
         .then((resp) => resp.json())
-        .then((data) => {
-            return data.results.map((item) => ({
-                key: uuid(),
-                title: item.original_title,
-                popularity: item.popularity,
-                votes: item.vote_average,
-                overview: item.overview,
-                backdrop: {
-                    uri: getImageURL(item.backdrop_path)
-                },
-                poster: {
-                    uri: getImageURL(item.poster_path, 300),
-                    width: 240,
-                    height: 357
-                },
-            }));
-        });
+        .then((data) => data.results.map((item) => ({
+            key: uuid(),
+            title: item.title,
+            popularity: item.popularity,
+            votes: item.vote_average,
+            overview: item.overview,
+            backdrop: {
+                uri: getImageURL(item.backdrop_path)
+            },
+            poster: {
+                uri: getImageURL(item.poster_path, 300),
+                width: 240,
+                height: 357
+            },
+        })));
 };

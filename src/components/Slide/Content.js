@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, Text, View} from 'react-native';
 import Rating from 'react-native-easy-rating';
-
 import {ContentStyles} from './';
 
-const Content = (item, style) => (
+const Content = ({item, style}) => (
     <View style={[ContentStyles.container, style]}>
         <Text style={ContentStyles.title}>
             {item.title}
