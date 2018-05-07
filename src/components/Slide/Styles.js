@@ -3,9 +3,9 @@ import {screen} from "../Styles";
 import {Colors} from "../../utils/colors";
 
 import {
-    BORDER_RADIUS_LG, BORDER_RADIUS_MD,
+    BORDER_RADIUS_LG,
+    FONT_SIZE_LG,
     FONT_SIZE_MD,
-    FONT_SIZE_XL,
     SPACE_LG,
     SPACE_LG2,
     SPACE_MD,
@@ -28,22 +28,25 @@ const ContentStyles = {
     container: {
         flex: 1,
         marginHorizontal: SPACE_LG,
-        marginVertical: SPACE_MD,
         alignItems: 'center'
     },
     title: {
-        fontSize: FONT_SIZE_XL,
-        fontWeight: '800',
+        fontSize: FONT_SIZE_LG,
+        fontWeight: '600',
         textAlign: 'center',
         color: Colors.dark
     },
-    ratingNumber: {
-        fontSize: FONT_SIZE_MD,
-        fontWeight: '400',
+    ratingWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
         marginVertical: SPACE_SM
     },
-    ratingControl: {
-        marginBottom: SPACE_MD
+    ratingControl: {},
+    ratingNumber: {
+        fontSize: FONT_SIZE_MD,
+        fontWeight: '600',
+        color: Colors.yellow,
+        marginLeft: SPACE_SM
     },
     overviewWrapper: {
         flex: 1
@@ -60,7 +63,7 @@ const PosterStyles = {
         width: screen.width
     },
     content: {
-        marginTop: SPACE_LG2,
+        marginTop: SPACE_LG2 + SPACE_MD,
         marginBottom: SPACE_LG2,
         shadowColor: Colors.black,
         shadowOffset: {width: 0, height: SPACE_XS},
@@ -72,7 +75,7 @@ const PosterStyles = {
         position: 'absolute',
         width: '100%',
         height: '100%',
-        borderRadius: BORDER_RADIUS_MD,
+        borderRadius: BORDER_RADIUS_LG,
         overflow: 'hidden'
     }
 };

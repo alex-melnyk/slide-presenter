@@ -5,8 +5,17 @@ import PropTypes from 'prop-types';
 import {contentWidth, MainStyles, screen} from "./Styles";
 import {Backdrop, Content, Poster} from "./Slide";
 import {SPACE_LG2} from "../utils/sizes";
+import Header from "./common/Header";
 
 class Main extends Component {
+    backPressed = () => {
+        console.log('Back pressed!');
+    };
+
+    readMorePressed = ({item}) => {
+        console.log('PRESSED', item);
+    };
+
     renderBackdrops = (items) =>
         items.map((item) => (
             <Backdrop
@@ -21,6 +30,7 @@ class Main extends Component {
                 key={item.key}
                 item={item}
                 style={MainStyles.contentItem}
+                onReadMore={this.readMorePressed}
             />
         ));
 
@@ -88,6 +98,12 @@ class Main extends Component {
                         {this.renderPosters(items)}
                     </ScrollView>
                 </View>
+
+                <Header
+                    title="Find"
+                    canBack={false}
+                    onBack={this.backPressed}
+                />
             </View>
         );
     }

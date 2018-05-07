@@ -14,7 +14,7 @@ export function loadLocaleLanguage() {
         DangerZone.Localization
             .getCurrentLocaleAsync()
             .then((locale) => {
-                const lang = locale.substring(0,2);
+                const lang = locale.substring(0, 2);
                 dispatch(localeLanguageLoaded(lang));
             });
     };
