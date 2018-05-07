@@ -18,9 +18,9 @@ export default async (path, lang = 'en') => {
         .then((data) => data.results.map((item) => ({
             key: uuid(),
             title: item.title,
-            popularity: item.popularity,
             votes: item.vote_average,
             overview: item.overview,
+            release: item.release_date,
             backdrop: {
                 uri: getImageURL(item.backdrop_path)
             },

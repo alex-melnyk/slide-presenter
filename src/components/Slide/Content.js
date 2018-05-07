@@ -37,7 +37,6 @@ class Content extends Component {
                 </ScrollView>
                 <View style={{
                     marginTop: SPACE_SM,
-                    justifySelf: 'flex-end',
                     justifyContent: 'flex-end',
                     width: '100%',
                 }}>
