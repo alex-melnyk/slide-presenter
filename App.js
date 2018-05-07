@@ -6,8 +6,7 @@ import Store from './src/store';
 
 import MainContainer from "./src/container/MainContainer";
 import {Colors} from "./src/utils/colors";
-
-import * as SettingsActions from "./src/store/actions/settingsActions";
+import * as AppActions from "./src/store/actions/appActions";
 
 export default class App extends Component {
     state = {
@@ -15,10 +14,10 @@ export default class App extends Component {
     };
 
     componentDidMount() {
-        Store.dispatch(SettingsActions.loadLocaleLanguage());
+        Store.dispatch(AppActions.loadLocaleLanguage());
 
         const unsubscribe = Store.subscribe(() => {
-            if (Store.getState().settings.loaded) {
+            if (Store.getState().app.settingsLoaded) {
                 unsubscribe();
 
                 this.setState({settingsLoaded: true});

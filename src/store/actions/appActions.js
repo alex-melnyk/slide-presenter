@@ -1,10 +1,10 @@
 import {DangerZone} from 'expo';
 
-export const SETTINGS_ACTION_LOCALE_LANGUAGE_LOADED = 'SETTINGS_ACTION_LOCALE_LANGUAGE_LOADED';
+export const APP_ACTION_LOCALE_LANGUAGE_LOADED = 'SETTINGS_ACTION_LOCALE_LANGUAGE_LOADED';
 
 function localeLanguageLoaded(language) {
     return {
-        type: SETTINGS_ACTION_LOCALE_LANGUAGE_LOADED,
+        type: APP_ACTION_LOCALE_LANGUAGE_LOADED,
         payload: {language}
     }
 }

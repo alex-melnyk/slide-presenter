@@ -22,9 +22,9 @@ export function getNowPlaying() {
     return (dispatch, getState) => {
         dispatch({type: MOVIES_ACTION_REQUEST_NOW_PLAYING});
 
-        const {settings} = getState();
+        const {app} = getState();
 
-        moviedb(GET_MOVIE_NOW_PLAYING, settings.language)
+        moviedb(GET_MOVIE_NOW_PLAYING, app.language)
             .then((data) => dispatch(getNowPlayingSuccess(data)))
             .catch((err) => dispatch(getNowPlayingFailure(err)));
     };

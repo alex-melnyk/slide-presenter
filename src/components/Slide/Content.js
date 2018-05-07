@@ -1,12 +1,26 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import Rating from 'react-native-easy-rating';
+import uuid from 'uuid';
+import {MaterialIcons} from '@expo/vector-icons';
 import {ContentStyles} from './';
 import {BORDER_RADIUS_SM, SPACE_SM, SPACE_XS} from "../../utils/sizes";
 import {Colors} from "../../utils/colors";
 
 class Content extends Component {
+    renderRating = (rating) => {
+        const floored = Math.floor(rating);
+
+        return [...new Array(10)].map((e, i) => (
+            <MaterialIcons
+                key={uuid()}
+                name={(floored > i) ? 'star' : (floored === i && floored < rating) ? 'star-half' : 'star-border'}
+                size={24}
+                color={Colors.yellow}
+            />
+        ));
+    };
+
     render() {
         const {item, style, onReadMore} = this.props;
 
@@ -15,19 +29,23 @@ class Content extends Component {
                 <Text style={ContentStyles.title}>
                     {item.title}
                 </Text>
+                <View style={ContentStyles.ratingControl}>
+                    {this.renderRating(item.voteAverage)}
+                </View>
                 <View style={ContentStyles.ratingWrapper}>
-                    <Rating
-                        style={ContentStyles.ratingControl}
-                        rating={item.votes}
-                        max={10}
-                        iconWidth={20}
-                        iconHeight={20}
-                        editable={false}
-                        onRate={(rating) => {
-                        }}
+                    <MaterialIcons
+                        name="stars"
+                        size={24}
                     />
                     <Text style={ContentStyles.ratingNumber}>
-                        {item.votes}
+                        {item.voteAverage}/
+                    </Text>
+                    <MaterialIcons
+                        name="people"
+                        size={24}
+                    />
+                    <Text style={ContentStyles.ratingNumber}>
+                        {item.voteCount}
                     </Text>
                 </View>
                 <ScrollView style={ContentStyles.overviewWrapper}>

@@ -1,17 +1,17 @@
-import * as SettingsActions from "../actions/settingsActions";
+import * as AppActions from "../actions/appActions";
 
 const initialState = {
     language: undefined,
-    loaded: false
+    settingsLoaded: false
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case SettingsActions.SETTINGS_ACTION_LOCALE_LANGUAGE_LOADED:
+        case AppActions.APP_ACTION_LOCALE_LANGUAGE_LOADED:
             return {
                 ...state,
                 ...action.payload,
-                loaded: true
+                settingsLoaded: true
             };
         default:
             return state;

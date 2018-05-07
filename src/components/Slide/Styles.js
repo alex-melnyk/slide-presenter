@@ -36,17 +36,20 @@ const ContentStyles = {
         textAlign: 'center',
         color: Colors.dark
     },
+    ratingControl: {
+        marginVertical: SPACE_XS,
+        flexDirection: 'row',
+        height: 24
+    },
     ratingWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: SPACE_SM
+        marginBottom: SPACE_SM
     },
-    ratingControl: {},
     ratingNumber: {
         fontSize: FONT_SIZE_MD,
         fontWeight: '600',
-        color: Colors.yellow,
-        marginLeft: SPACE_SM
+        marginLeft: SPACE_XS
     },
     overviewWrapper: {
         flex: 1

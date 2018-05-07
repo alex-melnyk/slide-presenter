@@ -18,7 +18,8 @@ export default async (path, lang = 'en') => {
         .then((data) => data.results.map((item) => ({
             key: uuid(),
             title: item.title,
-            votes: item.vote_average,
+            voteAverage: item.vote_average,
+            voteCount: item.vote_count,
             overview: item.overview,
             release: item.release_date,
             backdrop: {

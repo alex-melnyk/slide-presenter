@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
+import app from "./appReducer";
 import movies from './moviesReducer';
-import settings from "./settingsReducer";
 
 export default combineReducers({
-    movies,
-    settings
+    app,
+    movies
 });
