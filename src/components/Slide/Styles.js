@@ -63,7 +63,7 @@ const ContentStyles = {
 const PosterStyles = {
     container: {
         alignItems: 'center',
-        width: screen.width
+        width: screen.width - 80
     },
     content: {
         marginTop: SPACE_LG2 + SPACE_MD,

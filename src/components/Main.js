@@ -56,9 +56,9 @@ class Main extends Component {
                 <View style={MainStyles.backdrop}>
                     <ScrollView
                         ref={(ref) => this.scrollBack = ref}
+                        horizontal={true}
                         showsHorizontalScrollIndicator={false}
                         removeClippedSubviews={true}
-                        horizontal={true}
                         scrollEnabled={false}
                     >
                         {this.renderBackdrops(items)}
@@ -70,9 +70,9 @@ class Main extends Component {
                         <ScrollView
                             ref={(ref) => this.scrollCont = ref}
                             style={MainStyles.contentRoller}
+                            horizontal={true}
                             showsHorizontalScrollIndicator={false}
                             removeClippedSubviews={true}
-                            horizontal={true}
                             scrollEnabled={false}
                         >
                             {this.renderContents(items)}
@@ -82,17 +82,26 @@ class Main extends Component {
 
                 <View style={MainStyles.posterWrapper}>
                     <ScrollView
-                        scrollEventThrottle={16}
+                        style={{
+                            alignSelf: 'center',
+                            width: screen.width - 80,
+                            overflow: 'visible'
+                        }}
                         horizontal={true}
-                        pagingEnabled={true}
                         showsHorizontalScrollIndicator={false}
                         removeClippedSubviews={true}
+                        pagingEnabled={true}
+                        scrollEventThrottle={16}
                         onScroll={(e) => {
-                            this.scrollBack.scrollTo(e.nativeEvent.contentOffset);
+                            if (e.nativeEvent.contentOffset.x >= 0 && e.nativeEvent.contentOffset.x < (screen.width - 80) * (items.length - 2)) {
+                                this.scrollBack.scrollTo({
+                                    x: e.nativeEvent.contentOffset.x / (screen.width - 80) * screen.width
+                                });
 
-                            this.scrollCont.scrollTo({
-                                x: e.nativeEvent.contentOffset.x / screen.width * (contentWidth + SPACE_LG2)
-                            });
+                                this.scrollCont.scrollTo({
+                                    x: e.nativeEvent.contentOffset.x / (screen.width - 80) * (contentWidth + SPACE_LG2)
+                                });
+                            }
                         }}
                     >
                         {this.renderPosters(items)}
