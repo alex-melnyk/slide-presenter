@@ -4,8 +4,8 @@ import {Colors} from "../../utils/colors";
 
 import {
     BORDER_RADIUS_LG,
+    FONT_SIZE_LG,
     FONT_SIZE_MD,
-    FONT_SIZE_XL,
     SPACE_LG,
     SPACE_LG2,
     SPACE_MD,
@@ -28,22 +28,28 @@ const ContentStyles = {
     container: {
         flex: 1,
         marginHorizontal: SPACE_LG,
-        marginVertical: SPACE_MD,
         alignItems: 'center'
     },
     title: {
-        fontSize: FONT_SIZE_XL,
-        fontWeight: '800',
+        fontSize: FONT_SIZE_LG,
+        fontWeight: '600',
         textAlign: 'center',
         color: Colors.dark
     },
+    ratingControl: {
+        marginVertical: SPACE_XS,
+        flexDirection: 'row',
+        height: 24
+    },
+    ratingWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: SPACE_SM
+    },
     ratingNumber: {
         fontSize: FONT_SIZE_MD,
-        fontWeight: '400',
-        marginVertical: SPACE_SM
-    },
-    ratingControl: {
-        marginBottom: SPACE_MD
+        fontWeight: '600',
+        marginLeft: SPACE_XS
     },
     overviewWrapper: {
         flex: 1
@@ -60,7 +66,7 @@ const PosterStyles = {
         width: screen.width
     },
     content: {
-        marginTop: SPACE_LG2,
+        marginTop: SPACE_LG2 + SPACE_MD,
         marginBottom: SPACE_LG2,
         shadowColor: Colors.black,
         shadowOffset: {width: 0, height: SPACE_XS},

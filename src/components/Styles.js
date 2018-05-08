@@ -24,7 +24,7 @@ const MainStyles = {
     },
     contentBackground: {
         marginHorizontal: SPACE_LG,
-        paddingTop: 120,
+        paddingTop: 160,
         height: screen.height / 5 * 3,
         borderRadius: BORDER_RADIUS_LG,
         backgroundColor: Colors.white,
@@ -46,9 +46,19 @@ const MainStyles = {
         position: 'absolute',
         top: 0,
         left: 0,
-        width: screen.width
+        width: screen.width,
+        shadowColor: Colors.black,
+        shadowOffset: {width: 0, height: SPACE_SM},
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 2
     },
-
+    readMoreButton: {
+        backgroundColor: Colors.dark
+    },
+    readMoreButtonText: {
+        backgroundColor: Colors.dark
+    }
 };
 
 export {
