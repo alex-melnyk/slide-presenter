@@ -93,7 +93,7 @@ class Main extends Component {
                         pagingEnabled={true}
                         scrollEventThrottle={16}
                         onScroll={(e) => {
-                            if (e.nativeEvent.contentOffset.x >= 0 && e.nativeEvent.contentOffset.x < (screen.width - 80) * (items.length - 2)) {
+                            if (e.nativeEvent.contentOffset.x >= 0 && e.nativeEvent.contentOffset.x < (screen.width - 80) * (items.length - 1)) {
                                 this.scrollBack.scrollTo({
                                     x: e.nativeEvent.contentOffset.x / (screen.width - 80) * screen.width
                                 });
