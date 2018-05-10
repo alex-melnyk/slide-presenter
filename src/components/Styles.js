@@ -1,9 +1,14 @@
-import {Dimensions} from 'react-native';
 import {Colors} from "../utils/colors";
-import {BORDER_RADIUS_LG, SPACE_LG, SPACE_LG2, SPACE_MD, SPACE_MD2, SPACE_SM} from "../utils/sizes";
-
-export const screen = Dimensions.get('screen');
-export const contentWidth = (screen.width - SPACE_LG2 - SPACE_MD2 - SPACE_MD2);
+import {
+    BORDER_RADIUS_LG,
+    MOVIE_CONTENT_HEIGHT,
+    MOVIE_CONTENT_WIDTH,
+    POSTER_CONTAINER_WIDTH,
+    screen,
+    SPACE_LG, SPACE_LG2,
+    SPACE_MD,
+    SPACE_SM
+} from "../utils/sizes";
 
 const MainStyles = {
     container: {
@@ -24,8 +29,9 @@ const MainStyles = {
     },
     contentBackground: {
         marginHorizontal: SPACE_LG,
-        paddingTop: 160,
-        height: screen.height / 5 * 3,
+        paddingTop: screen.height / 6,
+        paddingBottom: SPACE_MD,
+        height: MOVIE_CONTENT_HEIGHT, // 3\5
         borderRadius: BORDER_RADIUS_LG,
         backgroundColor: Colors.white,
         shadowColor: Colors.black,
@@ -36,22 +42,21 @@ const MainStyles = {
     },
     contentRoller: {
         flex: 1,
-        marginHorizontal: SPACE_SM,
-        marginBottom: SPACE_MD
+        marginHorizontal: SPACE_SM
     },
     contentItem: {
-        width: contentWidth
+        width: MOVIE_CONTENT_WIDTH - SPACE_LG2
     },
     posterWrapper: {
+        alignItems: 'center',
         position: 'absolute',
         top: 0,
         left: 0,
-        width: screen.width,
-        shadowColor: Colors.black,
-        shadowOffset: {width: 0, height: SPACE_SM},
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        elevation: 2
+        width: screen.width
+    },
+    posterContainer: {
+        width: POSTER_CONTAINER_WIDTH,
+        overflow: 'visible'
     },
     readMoreButton: {
         backgroundColor: Colors.dark

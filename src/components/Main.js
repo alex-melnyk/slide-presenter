@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {ScrollView, View} from 'react-native';
 import PropTypes from 'prop-types';
 
-import {contentWidth, MainStyles, screen} from "./Styles";
+import {MainStyles} from "./Styles";
 import {Backdrop, Content, Poster} from "./Slide";
-import {SPACE_LG2} from "../utils/sizes";
+import {MOVIE_CONTENT_WIDTH, POSTER_CONTAINER_WIDTH, screen} from "../utils/sizes";
 import Header from "./common/Header";
 
 class Main extends Component {
@@ -82,11 +82,7 @@ class Main extends Component {
 
                 <View style={MainStyles.posterWrapper}>
                     <ScrollView
-                        style={{
-                            alignSelf: 'center',
-                            width: screen.width - 80,
-                            overflow: 'visible'
-                        }}
+                        style={MainStyles.posterContainer}
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
                         removeClippedSubviews={true}
@@ -95,11 +91,11 @@ class Main extends Component {
                         onScroll={(e) => {
                             if (e.nativeEvent.contentOffset.x >= 0 && e.nativeEvent.contentOffset.x < (screen.width - 80) * (items.length - 1)) {
                                 this.scrollBack.scrollTo({
-                                    x: e.nativeEvent.contentOffset.x / (screen.width - 80) * screen.width
+                                    x: e.nativeEvent.contentOffset.x / POSTER_CONTAINER_WIDTH * screen.width
                                 });
 
                                 this.scrollCont.scrollTo({
-                                    x: e.nativeEvent.contentOffset.x / (screen.width - 80) * (contentWidth + SPACE_LG2)
+                                    x: e.nativeEvent.contentOffset.x / POSTER_CONTAINER_WIDTH * MOVIE_CONTENT_WIDTH
                                 });
                             }
                         }}

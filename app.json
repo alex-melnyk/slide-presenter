@@ -1,5 +1,8 @@
 {
   "expo": {
-    "sdkVersion": "26.0.0"
+    "sdkVersion": "26.0.0",
+    "privacy": "public",
+    "name": "Slide Presenter",
+    "slug": "slide-presenter"
   }
 }

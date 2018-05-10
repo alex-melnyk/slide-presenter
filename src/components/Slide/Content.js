@@ -1,28 +1,21 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import uuid from 'uuid';
 import {MaterialIcons} from '@expo/vector-icons';
-import {ContentStyles} from './';
+
 import {BORDER_RADIUS_SM, SPACE_SM, SPACE_XS} from "../../utils/sizes";
 import {Colors} from "../../utils/colors";
+import {ContentStyles} from './';
+
+import Rating from "../common/Rating";
 
 class Content extends Component {
-    renderRating = (rating) => {
-        const floored = Math.floor(rating);
-
-        return [...new Array(10)].map((e, i) => (
-            <MaterialIcons
-                key={uuid()}
-                name={(floored > i) ? 'star' : (floored === i && floored < rating) ? 'star-half' : 'star-border'}
-                size={24}
-                color={Colors.yellow}
-            />
-        ));
-    };
-
     render() {
-        const {item, style, onReadMore} = this.props;
+        const {
+            item,
+            style,
+            onReadMore
+        } = this.props;
 
         return (
             <View style={[ContentStyles.container, style]}>
@@ -30,7 +23,7 @@ class Content extends Component {
                     {item.title}
                 </Text>
                 <View style={ContentStyles.ratingControl}>
-                    {this.renderRating(item.voteAverage)}
+                    <Rating rating={item.voteAverage} />
                 </View>
                 <View style={ContentStyles.ratingWrapper}>
                     <MaterialIcons

@@ -1,14 +1,12 @@
 import {Image} from 'react-native';
-import {screen} from "../Styles";
 import {Colors} from "../../utils/colors";
-
 import {
     BORDER_RADIUS_LG,
     FONT_SIZE_LG,
-    FONT_SIZE_MD,
+    FONT_SIZE_MD, POSTER_CONTAINER_HEIGHT,
+    POSTER_CONTAINER_WIDTH,
+    screen,
     SPACE_LG,
-    SPACE_LG2,
-    SPACE_MD,
     SPACE_SM,
     SPACE_XS
 } from "../../utils/sizes";
@@ -62,24 +60,20 @@ const ContentStyles = {
 
 const PosterStyles = {
     container: {
+        marginTop: screen.height / 10,
         alignItems: 'center',
-        width: screen.width - 80
-    },
-    content: {
-        marginTop: SPACE_LG2 + SPACE_MD,
-        marginBottom: SPACE_LG2,
+        justifyContent: 'center',
+        width: POSTER_CONTAINER_WIDTH,
+        height: POSTER_CONTAINER_HEIGHT,
         shadowColor: Colors.black,
-        shadowOffset: {width: 0, height: SPACE_XS},
-        shadowOpacity: 0.25,
+        shadowOffset: {width: 0, height: SPACE_SM},
+        shadowOpacity: 0.1,
         shadowRadius: 5,
         elevation: 2
     },
     poster: {
         position: 'absolute',
-        width: '100%',
-        height: '100%',
-        borderRadius: BORDER_RADIUS_LG,
-        overflow: 'hidden'
+        borderRadius: BORDER_RADIUS_LG
     }
 };
 
