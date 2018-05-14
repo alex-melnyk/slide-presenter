@@ -2,19 +2,16 @@ import {Colors} from "../utils/colors";
 import {
     BORDER_RADIUS_LG,
     MOVIE_CONTENT_HEIGHT,
-    MOVIE_CONTENT_WIDTH,
     POSTER_CONTAINER_WIDTH,
     screen,
     SPACE_LG,
-    SPACE_LG2,
-    SPACE_MD,
     SPACE_SM
 } from "../utils/sizes";
 
 const MainStyles = {
     container: {
         flex: 1,
-        justifyContent: 'flex-end'
+        // justifyContent: 'flex-end'
     },
     backdrop: {
         position: 'absolute',
@@ -22,17 +19,13 @@ const MainStyles = {
         top: 0,
         width: screen.width
     },
-    contentWrapper: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        width: screen.width,
-        paddingTop: screen.height / 3
-    },
     contentBackground: {
         marginHorizontal: SPACE_LG,
+        marginTop: screen.height / 3,
+
         paddingTop: screen.height / 5,
-        paddingBottom: SPACE_MD,
-        height: MOVIE_CONTENT_HEIGHT, // 3\5
+
+        height: MOVIE_CONTENT_HEIGHT,
 
         borderRadius: BORDER_RADIUS_LG,
         backgroundColor: Colors.white,

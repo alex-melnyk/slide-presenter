@@ -29,8 +29,7 @@ const ContentStyles = {
     container: {
         flex: 1,
         marginHorizontal: SPACE_LG,
-        alignItems: 'center',
-        width: MOVIE_CONTENT_WIDTH - SPACE_LG2
+        alignItems: 'center'
     },
     title: {
         fontSize: FONT_SIZE_LG,

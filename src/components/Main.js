@@ -1,19 +1,54 @@
 import React, {Component} from 'react';
-import {ScrollView, View} from 'react-native';
+import {Animated, ScrollView, View} from 'react-native';
 import PropTypes from 'prop-types';
+import posed from 'react-native-pose';
 
 import {MainStyles} from "./Styles";
 import {Backdrop, Content, Poster} from "./Slide";
-import {MOVIE_CONTENT_WIDTH, POSTER_CONTAINER_WIDTH, screen} from "../utils/sizes";
+import {
+    MOVIE_CONTENT_HEIGHT,
+    MOVIE_CONTENT_WIDTH,
+    POSTER_CONTAINER_WIDTH,
+    screen,
+    SPACE_LG,
+    SPACE_LG2
+} from "../utils/sizes";
 import {Header} from "./common";
 
+const PoseContainer = posed()({
+    collapse: {
+        containerHMargin: SPACE_LG,
+        containerVMargin: screen.height / 3,
+        containerHeight: MOVIE_CONTENT_HEIGHT,
+    },
+    expand: {
+        containerHMargin: 0,
+        containerVMargin: screen.height / 5,
+        containerHeight: screen.height - screen.height / 5,
+    }
+});
+
 class Main extends Component {
+    state = {
+        pose: 'collapse',
+        openId: null
+    };
+
     backPressed = () => {
         console.log('Back pressed!');
     };
 
     readMorePressed = ({item}) => {
-        console.log('PRESSED', item);
+        this.setState({
+            pose: this.state.pose === 'collapse'
+                ? 'expand'
+                : 'collapse',
+            openId: this.state.pose === 'collapse'
+                ? item.id
+                : null
+        });
+
+
     };
 
     renderBackdrops = (items) =>
@@ -29,6 +64,7 @@ class Main extends Component {
             <Content
                 key={`content_${item.id}`}
                 item={item}
+                open={item.id === this.state.openId}
                 onReadMore={this.readMorePressed}
             />
         ));
@@ -64,20 +100,28 @@ class Main extends Component {
                     </ScrollView>
                 </View>
 
-                <View style={MainStyles.contentWrapper}>
-                    <View style={MainStyles.contentBackground}>
-                        <ScrollView
-                            ref={(ref) => this.scrollCont = ref}
-                            style={MainStyles.contentRoller}
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                            removeClippedSubviews={true}
-                            scrollEnabled={false}
-                        >
-                            {this.renderContents(items)}
-                        </ScrollView>
-                    </View>
-                </View>
+                <PoseContainer pose={this.state.pose}>
+                    {
+                        ({containerHMargin, containerVMargin, containerHeight}) => (
+                            <Animated.View style={[MainStyles.contentBackground, {
+                                marginHorizontal: containerHMargin,
+                                marginTop: containerVMargin,
+                                height: containerHeight
+                            }]}>
+                                <ScrollView
+                                    ref={(ref) => this.scrollCont = ref}
+                                    style={MainStyles.contentRoller}
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                    removeClippedSubviews={true}
+                                    scrollEnabled={false}
+                                >
+                                    {this.renderContents(items)}
+                                </ScrollView>
+                            </Animated.View>
+                        )
+                    }
+                </PoseContainer>
 
                 <View style={MainStyles.posterWrapper}>
                     <ScrollView

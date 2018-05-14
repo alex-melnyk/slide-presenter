@@ -541,6 +541,18 @@
   version "9.6.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
 
+"@types/react-native@^0.55.4":
+  version "0.55.12"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.55.12.tgz#35778c709db57ff3092573d7a53f15ca380601ab"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^16.3.12":
+  version "16.3.14"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.14.tgz#f90ac6834de172e13ecca430dcb6814744225d36"
+  dependencies:
+    csstype "^2.2.0"
+
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -617,6 +629,13 @@ analytics-node@^2.1.0:
     remove-trailing-slash "^0.1.0"
     superagent "^3.5.0"
     superagent-retry "^0.6.0"
+
+animated-pose@^0.2.0, animated-pose@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/animated-pose/-/animated-pose-0.2.2.tgz#e137de161817fad16185e71f093ab29c57e6d3f3"
+  dependencies:
+    "@types/react-native" "^0.55.4"
+    pose-core "^0.3.0"
 
 ansi-escapes@^3.0.0:
   version "3.1.0"
@@ -2128,6 +2147,10 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   resolved "https://registry.yarnpkg.com/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
   dependencies:
     cssom "0.3.x"
+
+csstype@^2.2.0:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.1.tgz#654231d1ddddfc3eb93da281a1144e7c14fc0bdc"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -5317,6 +5340,10 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
+pose-core@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/pose-core/-/pose-core-0.3.0.tgz#63800caee0b67daa7eb52368438969a58ec97c42"
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -5533,6 +5560,15 @@ react-native-gesture-handler@1.0.0-alpha.41:
     babel-plugin-module-resolver "^2.3.0"
     babel-preset-react-native "1.9.0"
 
+react-native-pose@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-pose/-/react-native-pose-0.3.0.tgz#ef647bc9b28b43fc56b3ce23744ece9bda52981a"
+  dependencies:
+    "@types/react" "^16.3.12"
+    "@types/react-native" "^0.55.4"
+    animated-pose "^0.2.2"
+    react-pose-core "^0.2.0"
+
 react-native-safe-module@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-module/-/react-native-safe-module-1.2.0.tgz#a23824ca24edc2901913694a76646475113d570d"
@@ -5637,6 +5673,14 @@ react-native@0.54.0:
     xcode "^0.9.1"
     xmldoc "^0.4.0"
     yargs "^9.0.0"
+
+react-pose-core@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-pose-core/-/react-pose-core-0.2.0.tgz#c52327239dd46e6dbbd440739453bd7fa9a37c3d"
+  dependencies:
+    "@types/react" "^16.3.12"
+    "@types/react-native" "^0.55.4"
+    animated-pose "^0.2.0"
 
 react-proxy@^1.1.7:
   version "1.1.8"
