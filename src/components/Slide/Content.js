@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import {MaterialIcons} from '@expo/vector-icons';
+import {MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
 
 import {BORDER_RADIUS_SM, SPACE_SM, SPACE_XS} from "../../utils/sizes";
 import {Colors} from "../../utils/colors";
 import {ContentStyles} from './';
 
 import Rating from "../common/Rating";
+import Tagger from "../common/Tagger";
 
 class Content extends Component {
     render() {
@@ -23,29 +24,37 @@ class Content extends Component {
                     {item.title}
                 </Text>
                 <View style={ContentStyles.ratingControl}>
-                    <Rating rating={item.voteAverage} />
-                </View>
-                <View style={ContentStyles.ratingWrapper}>
-                    <MaterialIcons
-                        name="stars"
+                    <Rating
+                        rating={item.voteAverage}
                         size={24}
                     />
                     <Text style={ContentStyles.ratingNumber}>
-                        {item.voteAverage}/
-                    </Text>
-                    <MaterialIcons
-                        name="people"
-                        size={24}
-                    />
-                    <Text style={ContentStyles.ratingNumber}>
-                        {item.voteCount}
+                        {item.voteAverage}
                     </Text>
                 </View>
-                <ScrollView style={ContentStyles.overviewWrapper}>
-                    <Text style={ContentStyles.overviewContent}>
-                        {item.overview}
-                    </Text>
-                </ScrollView>
+                <View style={ContentStyles.shortDetailsWrapper}>
+                    <View style={ContentStyles.shortDetails}>
+                        <MaterialIcons
+                            name="access-time"
+                            size={16}
+                            color={Colors.darkGray}
+                        />
+                        <Text style={ContentStyles.shortDetailsText}>
+                            {item.runtime} min
+                        </Text>
+                    </View>
+                    <View style={ContentStyles.shortDetails}>
+                        <MaterialCommunityIcons
+                            name="movie-roll"
+                            size={16}
+                            color={Colors.darkGray}
+                        />
+                        <Text style={ContentStyles.shortDetailsText}>
+                            {item.release}
+                        </Text>
+                    </View>
+                </View>
+                <Tagger tags={item.genres} />
                 <View style={{
                     marginTop: SPACE_SM,
                     justifyContent: 'flex-end',
@@ -54,16 +63,14 @@ class Content extends Component {
                     <TouchableOpacity
                         onPress={() => onReadMore && onReadMore({item})}
                         style={{
-                            paddingVertical: SPACE_XS,
-                            paddingHorizontal: SPACE_SM,
-                            borderRadius: BORDER_RADIUS_SM,
-                            backgroundColor: Colors.yellow
+                            alignItems: 'center'
                         }}
                     >
-                        <Text style={{
-                            textAlign: 'center',
-                            color: Colors.white
-                        }}>Read more...</Text>
+                        <MaterialCommunityIcons
+                            name="chevron-down"
+                            size={24}
+                            color={Colors.darkGray}
+                        />
                     </TouchableOpacity>
                 </View>
             </View>

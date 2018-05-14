@@ -1,4 +1,4 @@
-import moviedb, {GET_MOVIE_NOW_PLAYING} from "../../moviedb";
+import {requestNowPlaying} from "../../moviedb";
 
 export const MOVIES_ACTION_REQUEST_NOW_PLAYING = 'MOVIES_ACTION_REQUEST_NOW_PLAYING';
 export const MOVIES_ACTION_SUCCESS_NOW_PLAYING = 'MOVIES_ACTION_SUCCESS_NOW_PLAYING';
@@ -24,7 +24,7 @@ export function getNowPlaying() {
 
         const {app} = getState();
 
-        moviedb(GET_MOVIE_NOW_PLAYING, app.language)
+        requestNowPlaying(app.language)
             .then((data) => dispatch(getNowPlayingSuccess(data)))
             .catch((err) => dispatch(getNowPlayingFailure(err)));
     };

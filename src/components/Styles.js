@@ -7,7 +7,7 @@ import {
     screen,
     SPACE_LG, SPACE_LG2,
     SPACE_MD,
-    SPACE_SM
+    SPACE_SM, SPACE_XS
 } from "../utils/sizes";
 
 const MainStyles = {
@@ -23,17 +23,19 @@ const MainStyles = {
     },
     contentWrapper: {
         flex: 1,
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         width: screen.width,
-        marginBottom: SPACE_LG
+        paddingTop: screen.height / 3
     },
     contentBackground: {
         marginHorizontal: SPACE_LG,
-        paddingTop: screen.height / 6,
+        paddingTop: screen.height / 5,
         paddingBottom: SPACE_MD,
         height: MOVIE_CONTENT_HEIGHT, // 3\5
+
         borderRadius: BORDER_RADIUS_LG,
         backgroundColor: Colors.white,
+
         shadowColor: Colors.black,
         shadowOffset: {width: 0, height: SPACE_SM},
         shadowOpacity: 0.1,

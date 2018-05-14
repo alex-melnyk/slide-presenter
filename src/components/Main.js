@@ -19,7 +19,7 @@ class Main extends Component {
     renderBackdrops = (items) =>
         items.map((item) => (
             <Backdrop
-                key={item.key}
+                key={`backdrop_${item.id}`}
                 backdrop={item.backdrop}
             />
         ));
@@ -27,7 +27,7 @@ class Main extends Component {
     renderContents = (items) =>
         items.map((item) => (
             <Content
-                key={item.key}
+                key={`content_${item.id}`}
                 item={item}
                 style={MainStyles.contentItem}
                 onReadMore={this.readMorePressed}
@@ -37,7 +37,7 @@ class Main extends Component {
     renderPosters = (items) =>
         items.map((item) => (
             <Poster
-                key={item.key}
+                key={`poster_${item.id}`}
                 poster={item.poster}
             />
         ));
@@ -91,7 +91,7 @@ class Main extends Component {
                         onScroll={(e) => {
                             if (e.nativeEvent.contentOffset.x >= 0 && e.nativeEvent.contentOffset.x < (screen.width - 80) * (items.length - 1)) {
                                 this.scrollBack.scrollTo({
-                                    x: e.nativeEvent.contentOffset.x / POSTER_CONTAINER_WIDTH * screen.width
+                                    x: e.nativeEvent.contentOffset.x / (POSTER_CONTAINER_WIDTH - 0.25) * screen.width
                                 });
 
                                 this.scrollCont.scrollTo({

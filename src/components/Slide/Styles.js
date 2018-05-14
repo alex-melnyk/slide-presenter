@@ -3,10 +3,10 @@ import {Colors} from "../../utils/colors";
 import {
     BORDER_RADIUS_LG,
     FONT_SIZE_LG,
-    FONT_SIZE_MD, POSTER_CONTAINER_HEIGHT,
+    FONT_SIZE_MD, FONT_SIZE_XM, POSTER_CONTAINER_HEIGHT,
     POSTER_CONTAINER_WIDTH,
     screen,
-    SPACE_LG,
+    SPACE_LG, SPACE_MD,
     SPACE_SM,
     SPACE_XS
 } from "../../utils/sizes";
@@ -35,19 +35,34 @@ const ContentStyles = {
         color: Colors.dark
     },
     ratingControl: {
-        marginVertical: SPACE_XS,
+        marginVertical: SPACE_MD,
         flexDirection: 'row',
-        height: 24
+        alignItems: 'center'
+    },
+    ratingNumber: {
+        marginLeft: SPACE_SM,
+        fontSize: FONT_SIZE_XM,
+        color: Colors.yellow
+    },
+    shortDetailsWrapper: {
+        marginBottom: SPACE_MD,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    shortDetails: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    shortDetailsText: {
+        marginLeft: SPACE_XS,
+        fontSize: 12,
+        color: Colors.darkGray
     },
     ratingWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: SPACE_SM
-    },
-    ratingNumber: {
-        fontSize: FONT_SIZE_MD,
-        fontWeight: '600',
-        marginLeft: SPACE_XS
     },
     overviewWrapper: {
         flex: 1
