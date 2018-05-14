@@ -5,14 +5,7 @@ import posed from 'react-native-pose';
 
 import {MainStyles} from "./Styles";
 import {Backdrop, Content, Poster} from "./Slide";
-import {
-    MOVIE_CONTENT_HEIGHT,
-    MOVIE_CONTENT_WIDTH,
-    POSTER_CONTAINER_WIDTH,
-    screen,
-    SPACE_LG,
-    SPACE_LG2
-} from "../utils/sizes";
+import {MOVIE_CONTENT_HEIGHT, MOVIE_CONTENT_WIDTH, POSTER_CONTAINER_WIDTH, screen, SPACE_LG} from "../utils/sizes";
 import {Header} from "./common";
 
 const PoseContainer = posed()({
@@ -20,18 +13,26 @@ const PoseContainer = posed()({
         containerHMargin: SPACE_LG,
         containerVMargin: screen.height / 3,
         containerHeight: MOVIE_CONTENT_HEIGHT,
+        posterOpacity: 1,
+        singlePosterTX: 0,
+        singlePosterTY: 0,
+        singlePosterScale: 1
     },
     expand: {
         containerHMargin: 0,
-        containerVMargin: screen.height / 5,
-        containerHeight: screen.height - screen.height / 5,
+        containerVMargin: screen.height / 4,
+        containerHeight: screen.height - screen.height / 4,
+        posterOpacity: 0,
+        singlePosterTX: -100,
+        singlePosterTY: -50,
+        singlePosterScale: 0.5
     }
 });
 
 class Main extends Component {
     state = {
         pose: 'collapse',
-        openId: null
+        selected: null
     };
 
     backPressed = () => {
@@ -43,8 +44,8 @@ class Main extends Component {
             pose: this.state.pose === 'collapse'
                 ? 'expand'
                 : 'collapse',
-            openId: this.state.pose === 'collapse'
-                ? item.id
+            selected: this.state.pose === 'collapse'
+                ? item
                 : null
         });
 
@@ -64,7 +65,7 @@ class Main extends Component {
             <Content
                 key={`content_${item.id}`}
                 item={item}
-                open={item.id === this.state.openId}
+                open={this.state.selected && this.state.selected.id === item.id}
                 onReadMore={this.readMorePressed}
             />
         ));
@@ -74,6 +75,9 @@ class Main extends Component {
             <Poster
                 key={`poster_${item.id}`}
                 poster={item.poster}
+                style={{
+                    opacity: !this.state.selected ? 1 : 0
+                }}
             />
         ));
 
@@ -124,27 +128,56 @@ class Main extends Component {
                 </PoseContainer>
 
                 <View style={MainStyles.posterWrapper}>
-                    <ScrollView
-                        style={MainStyles.posterContainer}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        removeClippedSubviews={true}
-                        pagingEnabled={true}
-                        scrollEventThrottle={16}
-                        onScroll={(e) => {
-                            if (e.nativeEvent.contentOffset.x >= 0 && e.nativeEvent.contentOffset.x < (screen.width - 80) * (items.length - 1)) {
-                                this.scrollBack.scrollTo({
-                                    x: e.nativeEvent.contentOffset.x / (POSTER_CONTAINER_WIDTH - 0.25) * screen.width
-                                });
+                    <PoseContainer pose={this.state.pose}>
+                        {
+                            ({posterOpacity}) => (
+                                <Animated.ScrollView
+                                    style={[MainStyles.posterContainer, {
+                                        opacity: posterOpacity
+                                    }]}
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                    removeClippedSubviews={true}
+                                    pagingEnabled={true}
+                                    scrollEventThrottle={16}
+                                    onScroll={(e) => {
+                                        if (e.nativeEvent.contentOffset.x >= 0 && e.nativeEvent.contentOffset.x < (screen.width - 80) * (items.length - 1)) {
+                                            this.scrollBack.scrollTo({
+                                                x: e.nativeEvent.contentOffset.x / (POSTER_CONTAINER_WIDTH - 0.25) * screen.width
+                                            });
 
-                                this.scrollCont.scrollTo({
-                                    x: e.nativeEvent.contentOffset.x / POSTER_CONTAINER_WIDTH * MOVIE_CONTENT_WIDTH
-                                });
+                                            this.scrollCont.scrollTo({
+                                                x: e.nativeEvent.contentOffset.x / POSTER_CONTAINER_WIDTH * MOVIE_CONTENT_WIDTH
+                                            });
+                                        }
+                                    }}
+                                >
+                                    {this.renderPosters(items)}
+                                </Animated.ScrollView>
+                            )
+                        }
+                    </PoseContainer>
+                    {
+                        this.state.selected &&
+                        <PoseContainer initialPose={'collapse'} pose={this.state.pose}>
+                            {
+                                ({singlePosterTX, singlePosterTY, singlePosterScale}) => (
+                                    <Poster
+                                        style={{
+                                            position: 'absolute',
+                                            transform: [
+                                                {translateX: singlePosterTX},
+                                                {translateY: singlePosterTY},
+                                                {scaleX: singlePosterScale},
+                                                {scaleY: singlePosterScale},
+                                            ]
+                                        }}
+                                        poster={this.state.selected.poster}
+                                    />
+                                )
                             }
-                        }}
-                    >
-                        {this.renderPosters(items)}
-                    </ScrollView>
+                        </PoseContainer>
+                    }
                 </View>
 
                 <Header

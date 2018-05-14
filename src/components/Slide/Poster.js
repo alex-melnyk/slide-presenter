@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Image, View} from 'react-native';
+import {Animated, Image, View} from 'react-native';
 
 import {POSTER_IMAGE_HEIGHT} from '../../utils/sizes';
 import {PosterStyles} from './';
 
-const Poster = ({poster: {uri, width, height}}) => (
-    <View style={PosterStyles.container}>
+const Poster = ({style, poster: {uri, width, height}}) => (
+    <Animated.View style={[PosterStyles.container, style]}>
         <Image
             style={[PosterStyles.poster, {
                 width: POSTER_IMAGE_HEIGHT / height * width,
@@ -15,12 +15,12 @@ const Poster = ({poster: {uri, width, height}}) => (
             resizeMode={Image.resizeMode.contain}
             source={{uri}}
         />
-    </View>
+    </Animated.View>
 );
 
 Poster.propTypes = {
     poster: PropTypes.shape({
-        // uri: PropTypes.string.isRequired,
+        uri: PropTypes.string.isRequired,
         width: PropTypes.number.isRequired,
         height: PropTypes.number.isRequired
     }).isRequired
