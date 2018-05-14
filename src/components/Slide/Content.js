@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
 
-import {BORDER_RADIUS_SM, SPACE_SM, SPACE_XS} from "../../utils/sizes";
+import {SPACE_SM} from "../../utils/sizes";
 import {Colors} from "../../utils/colors";
 import {ContentStyles} from './';
 
-import Rating from "../common/Rating";
-import Tagger from "../common/Tagger";
+import {Rating, Tagger} from "../common";
 
 class Content extends Component {
     render() {
@@ -17,6 +16,8 @@ class Content extends Component {
             style,
             onReadMore
         } = this.props;
+
+        console.log(item.genres);
 
         return (
             <View style={[ContentStyles.container, style]}>
@@ -54,7 +55,7 @@ class Content extends Component {
                         </Text>
                     </View>
                 </View>
-                <Tagger tags={item.genres} />
+                <Tagger tags={item.genres}/>
                 <View style={{
                     marginTop: SPACE_SM,
                     justifyContent: 'flex-end',
@@ -79,8 +80,17 @@ class Content extends Component {
 }
 
 Content.propTypes = {
-    item: PropTypes.object.isRequired,
-    onReadMore: PropTypes.func.isRequired
+    item: PropTypes.shape({
+        title: PropTypes.string,
+        voteAverage: PropTypes.number,
+        runtime: PropTypes.number,
+        release: PropTypes.string,
+        genres: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string
+        })),
+    }).isRequired,
+    onReadMore: PropTypes.func
 };
 
 export {Content};

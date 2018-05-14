@@ -5,9 +5,10 @@ import {
     MOVIE_CONTENT_WIDTH,
     POSTER_CONTAINER_WIDTH,
     screen,
-    SPACE_LG, SPACE_LG2,
+    SPACE_LG,
+    SPACE_LG2,
     SPACE_MD,
-    SPACE_SM, SPACE_XS
+    SPACE_SM
 } from "../utils/sizes";
 
 const MainStyles = {

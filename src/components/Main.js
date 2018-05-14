@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {MainStyles} from "./Styles";
 import {Backdrop, Content, Poster} from "./Slide";
 import {MOVIE_CONTENT_WIDTH, POSTER_CONTAINER_WIDTH, screen} from "../utils/sizes";
-import Header from "./common/Header";
+import {Header} from "./common";
 
 class Main extends Component {
     backPressed = () => {

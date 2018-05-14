@@ -3,10 +3,13 @@ import {Colors} from "../../utils/colors";
 import {
     BORDER_RADIUS_LG,
     FONT_SIZE_LG,
-    FONT_SIZE_MD, FONT_SIZE_XM, POSTER_CONTAINER_HEIGHT,
+    FONT_SIZE_MD,
+    FONT_SIZE_XM,
+    POSTER_CONTAINER_HEIGHT,
     POSTER_CONTAINER_WIDTH,
     screen,
-    SPACE_LG, SPACE_MD,
+    SPACE_LG,
+    SPACE_MD,
     SPACE_SM,
     SPACE_XS
 } from "../../utils/sizes";

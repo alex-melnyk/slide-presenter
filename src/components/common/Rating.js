@@ -31,4 +31,4 @@ Rating.propTypes = {
     stars: PropTypes.number,
 };
 
-export default Rating;
+export {Rating};

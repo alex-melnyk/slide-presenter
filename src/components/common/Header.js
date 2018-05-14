@@ -63,4 +63,4 @@ Header.propTypes = {
     onBack: PropTypes.func
 };
 
-export default Header;
+export {Header};

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Image, View} from 'react-native';
 
-import {POSTER_IMAGE_HEIGHT, screen} from '../../utils/sizes';
+import {POSTER_IMAGE_HEIGHT} from '../../utils/sizes';
 import {PosterStyles} from './';
 
 const Poster = ({poster: {uri, width, height}}) => (

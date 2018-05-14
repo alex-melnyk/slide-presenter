@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import uuid from 'uuid';
-import {MaterialIcons} from '@expo/vector-icons';
 
 import {Colors} from "../../utils/colors";
 import {ScrollView, Text, View} from "react-native";
@@ -46,4 +44,4 @@ const styles = {
     }
 };
 
-export default Tagger;
+export {Tagger};
