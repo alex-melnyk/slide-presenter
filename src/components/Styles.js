@@ -47,9 +47,6 @@ const MainStyles = {
         flex: 1,
         marginHorizontal: SPACE_SM
     },
-    contentItem: {
-        width: MOVIE_CONTENT_WIDTH - SPACE_LG2
-    },
     posterWrapper: {
         alignItems: 'center',
         position: 'absolute',

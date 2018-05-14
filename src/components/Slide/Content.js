@@ -13,14 +13,11 @@ class Content extends Component {
     render() {
         const {
             item,
-            style,
             onReadMore
         } = this.props;
 
-        console.log(item.genres);
-
         return (
-            <View style={[ContentStyles.container, style]}>
+            <View style={ContentStyles.container}>
                 <Text style={ContentStyles.title}>
                     {item.title}
                 </Text>

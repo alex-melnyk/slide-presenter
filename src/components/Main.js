@@ -29,7 +29,6 @@ class Main extends Component {
             <Content
                 key={`content_${item.id}`}
                 item={item}
-                style={MainStyles.contentItem}
                 onReadMore={this.readMorePressed}
             />
         ));
