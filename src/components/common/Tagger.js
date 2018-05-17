@@ -33,6 +33,7 @@ const styles = {
         alignItems: 'flex-start'
     },
     tag: {
+        minHeight: 18,
         marginHorizontal: 5,
         paddingHorizontal: 10,
         paddingVertical: 5,
